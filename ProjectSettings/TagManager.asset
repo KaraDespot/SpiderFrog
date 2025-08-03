@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Undefined
   - Fly
+  - Frog
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Movable
+  - Attack
   - Water
   - UI
   - 
