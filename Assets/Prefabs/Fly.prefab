@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9158551141138319359}
   - component: {fileID: -4385255064778965158}
   m_Layer: 3
-  m_Name: Sphere
+  m_Name: Fly
   m_TagString: Fly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

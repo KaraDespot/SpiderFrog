@@ -10,6 +10,9 @@ public class FlySpawner : MonoBehaviour
     public TextMeshProUGUI counterText;             // UI-счётчик мух
     public GameObject beePrefab;
     public float beeSpawnInterval = 4f;
+    public GameObject goldFlyPrefab; // Префаб золотой мухи
+    [Range(0f, 1f)]
+    public float goldFlyChance = 0.1f;
 
 
     private float timer;
@@ -65,9 +68,11 @@ public class FlySpawner : MonoBehaviour
 
         Vector3 spawnPos = transform.position + spawnOffset;
 
-        GameObject newFly = Instantiate(flyPrefab, spawnPos, Quaternion.identity);
+        // Выбираем обычную или золотую муху
+        GameObject prefabToSpawn = Random.value < goldFlyChance ? goldFlyPrefab : flyPrefab;
 
-        // Передаём ссылку на спавнер
+        GameObject newFly = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+
         Fly flyScript = newFly.GetComponent<Fly>();
         if (flyScript != null)
         {
@@ -105,5 +110,10 @@ public class FlySpawner : MonoBehaviour
     public void OnBeeDestroyed()
     {
         
+    }
+
+    public void OnGoldenFlyDestroyed()
+    {
+        flyCount += 5;
     }
 }
