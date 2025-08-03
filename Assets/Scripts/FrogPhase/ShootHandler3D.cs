@@ -2,9 +2,10 @@
 
 public class ShootHandler3D : MonoBehaviour
 {
-    public float hitRadius = 100f;
-    public string targetTag = "Fly";
-    public Camera mainCamera;
+    [SerializeField] float hitRadius = 100f;
+    [SerializeField] string targetTag = "Fly";
+    [SerializeField] Camera mainCamera;
+    [SerializeField] FlySpawner flySpawner; // Ссылка на спавнер мух, если нужно
     public int score = 0;
 
     private RectTransform aimRect;
@@ -38,13 +39,20 @@ public class ShootHandler3D : MonoBehaviour
                     // Проверка на золотую муху
                     if (target.GetComponent<GoldenFly>() != null)
                     {
-                        score += 5; // например, 5 очков за золотую
-                        Debug.Log("GOLDEN HIT! Score: " + score);
+
+                        flySpawner.flyCount += 5; // например, 5 очков за золотую
+                        Debug.Log("GOLDEN HIT! Score: " + flySpawner.flyCount);
+                    }
+                    if (target.GetComponent<Fly>() != null)
+                    {
+
+                        flySpawner.flyCount += 1; // например, 5 очков за золотую
+                        Debug.Log("HIT! Score: " + flySpawner.flyCount);
                     }
                     else
                     {
-                        score += 1;
-                        Debug.Log("HIT! Score: " + score);
+                        flySpawner.flyCount -= 1;
+                        Debug.Log("HIT! Score: " + flySpawner.flyCount);
                     }
 
                     Destroy(target);

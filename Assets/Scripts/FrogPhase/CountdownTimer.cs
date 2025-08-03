@@ -5,7 +5,7 @@ public class CountdownTimer : MonoBehaviour
 {
     public float timeRemaining = 30f;
     public TextMeshProUGUI timerText;
-    private bool timerIsRunning = true;
+    public bool timerIsRunning = false; // теперь по умолчанию false
 
     void Update()
     {
@@ -24,6 +24,11 @@ public class CountdownTimer : MonoBehaviour
                 // Здесь можно вызвать событие окончания таймера
             }
         }
+    }
+
+    public void StartTimer()
+    {
+        timerIsRunning = true;
     }
 
     void DisplayTime(float timeToDisplay)
