@@ -5,23 +5,28 @@ public class EnemyBirdAI : MonoBehaviour
 {
     enum AIState
     {
-        Idle,
-        Chase
+        ChaseFrog,
+        ChaseSpider
     }
     [SerializeField] private AIState currentState;
     NavMeshAgent agent;
 
     [SerializeField] private float chaseDistance;
-
     [SerializeField] private float suspiciousTime;
     private float timeSinceLastSawPlayer;
 
     private GameObject player;
+    [SerializeField] private GameObject targetFrog;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
+
+        if (targetFrog == null)
+        {
+            targetFrog = GameObject.FindGameObjectWithTag("Frog");
+        }
 
         timeSinceLastSawPlayer = suspiciousTime;
     }
@@ -32,42 +37,40 @@ public class EnemyBirdAI : MonoBehaviour
 
         switch (currentState)
         {
-            case AIState.Idle:
+            case AIState.ChaseFrog:
+
+                if (targetFrog != null)
+                {
+                    agent.SetDestination(targetFrog.transform.position);
+                }
 
                 if (distanceToPlayer <= chaseDistance)
                 {
-                    currentState = AIState.Chase;
+                    currentState = AIState.ChaseSpider;
                 }
                 break;
 
-            case AIState.Chase:
+            case AIState.ChaseSpider:
                 
                 agent.SetDestination(player.transform.position);
                 
 
                 if (distanceToPlayer > chaseDistance)
                 {
-                    agent.isStopped = true;
-                    agent.velocity = Vector3.zero;
                     timeSinceLastSawPlayer -= Time.deltaTime;
-                    FaceTarget();
 
                     if (timeSinceLastSawPlayer <= 0)
                     {
-                        currentState = AIState.Idle;
+                        currentState = AIState.ChaseFrog;
                         timeSinceLastSawPlayer = suspiciousTime;
-                        agent.isStopped = false;
                     }
+                }
+                else
+                {
+                     timeSinceLastSawPlayer = suspiciousTime;
                 }
                 break;
         }
-    }
-
-    void FaceTarget()
-    {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     void OnDrawGizmosSelected()
