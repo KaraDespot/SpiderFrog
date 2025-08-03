@@ -5,6 +5,8 @@ public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private Button startButton;
     [SerializeField] private Button authorsButton;
+    [SerializeField] private GameObject authorsPanel; // Панель "О нас"
+    [SerializeField] private Button closeAuthorsButton; // Кнопка закрытия панели
 
     [SerializeField] private string gameSceneName = "GameScene";
     [SerializeField] private string authorsSceneName = "AuthorsScene";
@@ -19,19 +21,27 @@ public class MainMenuUI : MonoBehaviour
 
         startButton.onClick.AddListener(OnStartClicked);
         authorsButton.onClick.AddListener(OnAuthorsClicked);
+        closeAuthorsButton.onClick.AddListener(OnCloseAuthorsClicked);
+
+        if (authorsPanel != null)
+            authorsPanel.SetActive(false); // Скрыть панель при старте
     }
 
     private void OnStartClicked()
     {
-        // Переход через загрузочный экран
         _sceneLoader.LoadScene("LoadingScene");
-        // В LoadingScene должен быть SceneLoader, который загрузит gameSceneName
         PlayerPrefs.SetString("NextScene", gameSceneName);
     }
 
     private void OnAuthorsClicked()
     {
-        _sceneLoader.LoadScene("LoadingScene");
-        PlayerPrefs.SetString("NextScene", authorsSceneName);
+        if (authorsPanel != null)
+            authorsPanel.SetActive(true);
+    }
+
+    private void OnCloseAuthorsClicked()
+    {
+        if (authorsPanel != null)
+            authorsPanel.SetActive(false);
     }
 }
