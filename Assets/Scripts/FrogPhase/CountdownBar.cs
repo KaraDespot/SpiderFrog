@@ -5,7 +5,8 @@ public class CountdownBar : MonoBehaviour
 {
     public float totalTime = 30f;
     private float timeRemaining;
-    public Slider progressBar;
+    public Image progressBar;
+    public bool barIsRunning = false;
 
     void Start()
     {
@@ -14,11 +15,19 @@ public class CountdownBar : MonoBehaviour
 
     void Update()
     {
-        if (timeRemaining > 0)
+        if (barIsRunning)
         {
-            timeRemaining -= Time.deltaTime;
-            float progress = timeRemaining / totalTime;
-            progressBar.value = progress; // если Slider
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                float progress = timeRemaining / totalTime;
+                progressBar.fillAmount = progress;
+            }
         }
+    }
+
+    public void StartBar()
+    {
+        barIsRunning = true;
     }
 }

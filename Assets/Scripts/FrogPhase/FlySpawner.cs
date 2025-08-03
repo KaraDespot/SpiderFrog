@@ -3,20 +3,21 @@ using TMPro;
 
 public class FlySpawner : MonoBehaviour
 {
-    public GameObject flyPrefab;                    // Префаб мухи
-    public float spawnInterval = 2f;                // Интервал между спавнами
+    [SerializeField] GameObject flyPrefab;                    // Префаб мухи
+    [SerializeField] float spawnInterval = 2f;                // Интервал между спавнами
     public int maxFlies = 10;                       // Максимум мух на сцене
     public Vector2 spawnArea = new Vector2(8f, 5f); // Область появления
     public TextMeshProUGUI counterText;             // UI-счётчик мух
     public GameObject beePrefab;
     public float beeSpawnInterval = 4f;
+    public int maxBees = 3;
     public GameObject goldFlyPrefab; // Префаб золотой мухи
     [Range(0f, 1f)]
     public float goldFlyChance = 0.1f;
 
 
     private float timer;
-    private int flyCount;
+    public int flyCount;//екущее количество мух на сцене
     private float beeTimer;
 
 
@@ -104,12 +105,12 @@ public class FlySpawner : MonoBehaviour
 
     public void OnFlyDestroyed()
     {
-        flyCount++;
+        //if (fly
     }
 
     public void OnBeeDestroyed()
     {
-        
+
     }
 
     public void OnGoldenFlyDestroyed()
