@@ -10,6 +10,8 @@ public class PlayerSpider : MonoBehaviour
     private Animator animator;
     private Quaternion targetRotation = Quaternion.identity;
 
+    [SerializeField] private Attack Attack;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,5 +50,13 @@ public class PlayerSpider : MonoBehaviour
 
         //    rb.MoveRotation(targetRotation);
         //}
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack.OnAttack();
+        }
     }
 }
