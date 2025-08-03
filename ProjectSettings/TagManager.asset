@@ -3,13 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Fly
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Fly
+  - Movable
   - Water
   - UI
   - 
