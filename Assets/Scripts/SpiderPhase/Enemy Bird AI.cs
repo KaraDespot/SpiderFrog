@@ -43,11 +43,14 @@ public class EnemyBirdAI : MonoBehaviour
             case AIState.Chase:
                 
                 agent.SetDestination(player.transform.position);
+                
+
                 if (distanceToPlayer > chaseDistance)
                 {
                     agent.isStopped = true;
                     agent.velocity = Vector3.zero;
                     timeSinceLastSawPlayer -= Time.deltaTime;
+                    FaceTarget();
 
                     if (timeSinceLastSawPlayer <= 0)
                     {
@@ -58,5 +61,18 @@ public class EnemyBirdAI : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    void FaceTarget()
+    {
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, chaseDistance);
     }
 }
