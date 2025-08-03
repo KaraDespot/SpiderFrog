@@ -7,10 +7,14 @@ public class SceneLoader : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private CanvasGroup _fadeCanvasGroup;
-    [SerializeField] private Image _danceImage; // Один Image для общей картинки
+        [SerializeField] private Image _frogDanceImage; // лягушка
+    [SerializeField] private Image _spiderDanceImage; // паук
 
     [Header("Sprites")]
-    [SerializeField] private Sprite[] _danceSprites; // 2 кадра: оба персонажа на одном спрайте
+    [SerializeField] private Sprite _frogDanceSprite1;
+    [SerializeField] private Sprite _frogDanceSprite2;
+    [SerializeField] private Sprite _spiderDanceSprite1;
+    [SerializeField] private Sprite _spiderDanceSprite2;
 
     [Header("Fade Settings")]
     [SerializeField] private float _fadeDuration = 0.5f;
@@ -22,8 +26,10 @@ public class SceneLoader : MonoBehaviour
     {
         if (_fadeCanvasGroup != null)
             _fadeCanvasGroup.alpha = 0f;
-        if (_danceImage != null)
-            _danceImage.gameObject.SetActive(false);
+        if (_frogDanceImage != null)
+            _frogDanceImage.gameObject.SetActive(false);
+        if (_spiderDanceImage != null)
+            _spiderDanceImage.gameObject.SetActive(false);
     }
 
     public void LoadScene(string sceneName)
@@ -35,7 +41,8 @@ public class SceneLoader : MonoBehaviour
     {
         yield return StartCoroutine(Fade(1f));
 
-        if (_danceImage != null) _danceImage.gameObject.SetActive(true);
+        if (_frogDanceImage != null) _frogDanceImage.gameObject.SetActive(true);
+        if (_spiderDanceImage != null) _spiderDanceImage.gameObject.SetActive(true);
 
         _animCoroutine = StartCoroutine(PlayDanceAnimation());
 
@@ -52,7 +59,8 @@ public class SceneLoader : MonoBehaviour
         if (_animCoroutine != null)
             StopCoroutine(_animCoroutine);
 
-        if (_danceImage != null) _danceImage.gameObject.SetActive(false);
+        if (_frogDanceImage != null) _frogDanceImage.gameObject.SetActive(false);
+        if (_spiderDanceImage != null) _spiderDanceImage.gameObject.SetActive(false);
 
         yield return StartCoroutine(Fade(0f));
 
@@ -64,8 +72,10 @@ public class SceneLoader : MonoBehaviour
         int frame = 0;
         while (true)
         {
-            if (_danceSprites.Length > 0 && _danceImage != null)
-                _danceImage.sprite = _danceSprites[frame % _danceSprites.Length];
+            if (_frogDanceImage != null)
+                _frogDanceImage.sprite = (frame % 2 == 0) ? _frogDanceSprite1 : _frogDanceSprite2;
+            if (_spiderDanceImage != null)
+                _spiderDanceImage.sprite = (frame % 2 == 0) ? _spiderDanceSprite1 : _spiderDanceSprite2;
 
             frame++;
             yield return new WaitForSeconds(_animFrameTime);
