@@ -4770,6 +4770,7 @@ MonoBehaviour:
   _healthBarImage: {fileID: 403262697}
   _healthBarSlider: {fileID: 0}
   maxHealth: 100
+  healthBarTransform: {fileID: 0}
 --- !u!114 &1053394334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5583,6 +5584,7 @@ MonoBehaviour:
   _healthBarImage: {fileID: 0}
   _healthBarSlider: {fileID: 472322223}
   maxHealth: 100
+  healthBarTransform: {fileID: 0}
 --- !u!114 &1233806765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6977,6 +6979,7 @@ MonoBehaviour:
   _healthBarImage: {fileID: 0}
   _healthBarSlider: {fileID: 423124860}
   maxHealth: 100
+  healthBarTransform: {fileID: 0}
 --- !u!1001 &1673463573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8626,7 +8629,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 20.3
   m_Depth: -1
   m_CullingMask:
@@ -8651,13 +8654,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952755638}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -17.8, y: 19.6, z: -20.3}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: -19.49, y: 35.08, z: -22.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &1952755642
 MonoBehaviour:
   m_ObjectHideFlags: 0
