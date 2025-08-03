@@ -52,7 +52,7 @@ public class HealthManager : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
             if (scoreText != null)
-                scoreText.text = "Счет: " + flySpawner.flyCount.ToString(); // Показываем счет
+                scoreText.text = "Мошек поймано: " + flySpawner.flyCount.ToString(); // Показываем счет
         }
     }
 
