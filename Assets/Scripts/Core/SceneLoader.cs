@@ -32,6 +32,16 @@ public class SceneLoader : MonoBehaviour
             _spiderDanceImage.gameObject.SetActive(false);
     }
 
+    public void Start()
+    {
+        // Только для LoadingScene: автозапуск загрузки целевой сцены
+        if (SceneManager.GetActiveScene().name == "LoadingScene")
+        {
+            string nextScene = PlayerPrefs.GetString("NextScene", "GameScene");
+            StartCoroutine(LoadSceneAsync(nextScene));
+        }
+    }
+
     public void LoadScene(string sceneName)
     {
         StartCoroutine(LoadSceneAsync(sceneName));
