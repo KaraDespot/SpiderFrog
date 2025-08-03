@@ -762,7 +762,9 @@ MonoBehaviour:
   spawnArea: {x: -2, y: 10}
   counterText: {fileID: 327349966}
   beePrefab: {fileID: 6841527374701394765, guid: b6a3913073fb80c4084cb2632047cc6f, type: 3}
-  beeSpawnInterval: 8
+  beeSpawnInterval: 7
+  goldFlyPrefab: {fileID: 2395739216395635742, guid: 4acfcb87d4fdfae4396d39c83eb2eb40, type: 3}
+  goldFlyChance: 0.1
 --- !u!4 &784989214
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,6 +1052,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1236192414}
+  - component: {fileID: 1236192415}
   m_Layer: 0
   m_Name: Frog_Stats
   m_TagString: Untagged
@@ -1072,6 +1075,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1236192415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236192413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dd90a2c683007439c22f9fdca2c893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  healthText: {fileID: 639533573}
 --- !u!4 &1273681860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6894206758377640270, guid: 71f41b50da9a3b24db5bb7816039df62, type: 3}

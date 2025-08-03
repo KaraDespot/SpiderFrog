@@ -21,24 +21,33 @@ public class ShootHandler3D : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // Позиция UI-прицела в экранных координатах
             Vector2 screenAimPos = RectTransformUtility.WorldToScreenPoint(mainCamera, aimRect.position);
 
-            GameObject[] flies = GameObject.FindGameObjectsWithTag(targetTag);
+            GameObject[] allTargets = GameObject.FindGameObjectsWithTag(targetTag);
 
             bool hit = false;
 
-            foreach (GameObject fly in flies)
+            foreach (GameObject target in allTargets)
             {
-                Vector3 flyScreenPos = mainCamera.WorldToScreenPoint(fly.transform.position);
+                Vector3 targetScreenPos = mainCamera.WorldToScreenPoint(target.transform.position);
 
-                float distance = Vector2.Distance(screenAimPos, flyScreenPos);
+                float distance = Vector2.Distance(screenAimPos, targetScreenPos);
 
                 if (distance <= hitRadius)
                 {
-                    Destroy(fly);
-                    score++;
-                    Debug.Log("HIT! Score: " + score);
+                    // Проверка на золотую муху
+                    if (target.GetComponent<GoldenFly>() != null)
+                    {
+                        score += 5; // например, 5 очков за золотую
+                        Debug.Log("GOLDEN HIT! Score: " + score);
+                    }
+                    else
+                    {
+                        score += 1;
+                        Debug.Log("HIT! Score: " + score);
+                    }
+
+                    Destroy(target);
                     hit = true;
                     break;
                 }

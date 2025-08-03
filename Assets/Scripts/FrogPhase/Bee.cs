@@ -12,7 +12,7 @@ public class Bee : MonoBehaviour
     {
         if (spawner != null)
         {
-            GameManagerr.Instance.TakeDamage();
+            HealthManager.Instance.TakeDamage();
             spawner.OnBeeDestroyed();
         }
     }
