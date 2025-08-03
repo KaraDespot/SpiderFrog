@@ -51,7 +51,7 @@ public class ShootHandler3D : MonoBehaviour
                     }
                     else
                     {
-                        flySpawner.flyCount -= 1;
+                        flySpawner.flyCount -= 0;
                         Debug.Log("HIT! Score: " + flySpawner.flyCount);
                     }
 

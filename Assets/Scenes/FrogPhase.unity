@@ -2311,6 +2311,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   healthText: {fileID: 639533573}
+  gameOverPanel: {fileID: 0}
+  scoreText: {fileID: 0}
+  flySpawner: {fileID: 0}
+  score: 0
 --- !u!4 &1273681860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6894206758377640270, guid: 71f41b50da9a3b24db5bb7816039df62, type: 3}
