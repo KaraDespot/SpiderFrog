@@ -1867,7 +1867,7 @@ GameObject:
   - component: {fileID: 403262696}
   - component: {fileID: 403262698}
   - component: {fileID: 403262697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1914,10 +1914,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: fe8d1b246ba420641aaeffca91c1e26f, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2225,7 +2225,7 @@ GameObject:
   - component: {fileID: 551637753}
   - component: {fileID: 551637752}
   - component: {fileID: 551637751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthbarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4147,7 +4147,7 @@ GameObject:
   - component: {fileID: 1048779609}
   - component: {fileID: 1048779611}
   - component: {fileID: 1048779610}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4187,14 +4187,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a141694e1c229174caecac665c7feb90, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4225,10 +4225,11 @@ GameObject:
   - component: {fileID: 1053394328}
   - component: {fileID: 1053394326}
   - component: {fileID: 1053394331}
-  - component: {fileID: 1053394332}
-  m_Layer: 0
+  - component: {fileID: 1053394333}
+  - component: {fileID: 1053394334}
+  m_Layer: 3
   m_Name: Enemy Bird
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4331,9 +4332,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   chaseDistance: 8
-  suspiciousTime: 3
+  attackDistance: 1.5
+  attackCooldown: 2
   targetFrog: {fileID: 1632455972}
---- !u!114 &1053394332
+  Attack: {fileID: 1053394334}
+--- !u!114 &1053394333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4342,9 +4345,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1053394325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08e8751678a2674e989138a58175b2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd577b589897da4890f46cfc99cb0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBarSprite: {fileID: 403262697}
+  maxHealth: 100
+--- !u!114 &1053394334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053394325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a23912ca0724584d8006004b09aded5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 10
+  attackRange: 2
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1062433744
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,6 +4815,7 @@ GameObject:
   - component: {fileID: 1233806760}
   - component: {fileID: 1233806762}
   - component: {fileID: 1233806764}
+  - component: {fileID: 1233806765}
   m_Layer: 0
   m_Name: Player Spider
   m_TagString: Player
@@ -4880,6 +4903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSpeed: 20
+  Attack: {fileID: 1233806765}
 --- !u!95 &1233806763
 Animator:
   serializedVersion: 7
@@ -4914,6 +4938,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd577b589897da4890f46cfc99cb0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBarSprite: {fileID: 0}
+  maxHealth: 100
+--- !u!114 &1233806765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233806758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a23912ca0724584d8006004b09aded5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 10
+  attackRange: 2
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &1256401606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7277,6 +7320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bird
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e2a1024c5366c194097378cc1114a762, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7694,8 +7741,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 20.3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7719,13 +7766,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952755638}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.26624262, y: -0, z: -0, w: 0.96390605}
-  m_LocalPosition: {x: 0, y: 13.67, z: -27.4}
+  m_LocalRotation: {x: 0.31347594, y: 0.5299155, z: -0.21949817, w: 0.7567979}
+  m_LocalPosition: {x: -19.6, y: 22.8, z: -9.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30.882, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 70, z: 0}
 --- !u!114 &1952755642
 MonoBehaviour:
   m_ObjectHideFlags: 0

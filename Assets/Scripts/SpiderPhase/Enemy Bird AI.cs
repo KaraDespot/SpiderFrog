@@ -12,11 +12,13 @@ public class EnemyBirdAI : MonoBehaviour
     NavMeshAgent agent;
 
     [SerializeField] private float chaseDistance;
-    [SerializeField] private float suspiciousTime;
-    private float timeSinceLastSawPlayer;
+    [SerializeField] private float attackDistance = 1.5f;
+    [SerializeField] private float attackCooldown = 2f;
+    private float lastAttackTime;
 
     private GameObject player;
     [SerializeField] private GameObject targetFrog;
+    [SerializeField] private Attack Attack;
 
     void Start()
     {
@@ -27,8 +29,6 @@ public class EnemyBirdAI : MonoBehaviour
         {
             targetFrog = GameObject.FindGameObjectWithTag("Frog");
         }
-
-        timeSinceLastSawPlayer = suspiciousTime;
     }
 
     void Update()
@@ -38,7 +38,6 @@ public class EnemyBirdAI : MonoBehaviour
         switch (currentState)
         {
             case AIState.ChaseFrog:
-
                 if (targetFrog != null)
                 {
                     agent.SetDestination(targetFrog.transform.position);
@@ -51,23 +50,17 @@ public class EnemyBirdAI : MonoBehaviour
                 break;
 
             case AIState.ChaseSpider:
-                
                 agent.SetDestination(player.transform.position);
-                
+
+                if (distanceToPlayer <= attackDistance && Time.time >= lastAttackTime + attackCooldown)
+                {
+                    Attack.OnAttack();
+                    lastAttackTime = Time.time;
+                }
 
                 if (distanceToPlayer > chaseDistance)
                 {
-                    timeSinceLastSawPlayer -= Time.deltaTime;
-
-                    if (timeSinceLastSawPlayer <= 0)
-                    {
-                        currentState = AIState.ChaseFrog;
-                        timeSinceLastSawPlayer = suspiciousTime;
-                    }
-                }
-                else
-                {
-                     timeSinceLastSawPlayer = suspiciousTime;
+                    currentState = AIState.ChaseFrog;
                 }
                 break;
         }
