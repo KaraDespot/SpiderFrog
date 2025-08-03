@@ -2,9 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManagerr : MonoBehaviour
+public class HealthManager : MonoBehaviour
 {
-    public static GameManagerr Instance;
+    public static HealthManager Instance;
 
     public int health = 3;
     public TextMeshProUGUI healthText; // сюда вставь текст "x3" из UI
