@@ -104,6 +104,6 @@ public class FlySpawner : MonoBehaviour
 
     public void OnBeeDestroyed()
     {
-        flyCount--;
+        
     }
 }
