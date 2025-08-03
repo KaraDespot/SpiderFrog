@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3869782922531770276}
   - component: {fileID: 9158551141138319359}
   - component: {fileID: -4385255064778965158}
+  - component: {fileID: -187017473765559143}
   m_Layer: 3
   m_Name: Fly
   m_TagString: Fly
@@ -137,3 +138,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1b0a28e8f37f74ea9a77fbfc5ed6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &-187017473765559143
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395739216395635742}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
