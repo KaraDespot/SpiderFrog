@@ -14,6 +14,7 @@ public class EnemyBirdAI : MonoBehaviour
     [SerializeField] private float chaseDistance;
     [SerializeField] private float attackDistance = 1.5f;
     [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float attackDamage = 10f; // Добавляем урон атаки
     private float lastAttackTime;
 
     private GameObject player;
@@ -43,6 +44,13 @@ public class EnemyBirdAI : MonoBehaviour
                 if (targetFrog != null)
                 {
                     agent.SetDestination(targetFrog.transform.position);
+                    
+                    // Проверяем, можем ли атаковать лягушку
+                    float distanceToFrog = Vector3.Distance(transform.position, targetFrog.transform.position);
+                    if (distanceToFrog <= attackDistance && Time.time >= lastAttackTime + attackCooldown)
+                    {
+                        AttackTarget(targetFrog);
+                    }
                 }
 
                 if (distanceToPlayer <= chaseDistance)
@@ -57,6 +65,7 @@ public class EnemyBirdAI : MonoBehaviour
                 if (distanceToPlayer <= attackDistance && Time.time >= lastAttackTime + attackCooldown)
                 {
                     lastAttackTime = Time.time;
+                    AttackTarget(player);
                 }
 
                 if (distanceToPlayer > chaseDistance)
@@ -64,6 +73,19 @@ public class EnemyBirdAI : MonoBehaviour
                     currentState = AIState.ChaseFrog;
                 }
                 break;
+        }
+    }
+
+    // Новый метод для атаки цели
+    private void AttackTarget(GameObject target)
+    {
+        if (target == null) return;
+
+        HealthBar healthBar = target.GetComponent<HealthBar>();
+        if (healthBar != null && healthBar.CurrentHealth > 0)
+        {
+            healthBar.TakeDamage(attackDamage);
+            lastAttackTime = Time.time;
         }
     }
 
