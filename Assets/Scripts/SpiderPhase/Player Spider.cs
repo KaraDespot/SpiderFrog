@@ -20,6 +20,7 @@ public class PlayerSpider : MonoBehaviour
     private float lastFlyAttackTime;
 
     private HealthBar healthBar;
+    private bool isDead = false; // Добавляем флаг смерти
 
     void Start()
     {
@@ -53,6 +54,9 @@ public class PlayerSpider : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Блокируем движение, если паук мёртв
+        if (isDead) return;
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -79,6 +83,9 @@ public class PlayerSpider : MonoBehaviour
     {
         if (animator == null) return;
 
+        // Блокируем атаки, если паук мёртв
+        if (isDead) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("Attack");
@@ -96,9 +103,10 @@ public class PlayerSpider : MonoBehaviour
         }
 
         // Проверка на смерть
-        if (healthBar != null && healthBar.CurrentHealth <= 0)
+        if (healthBar != null && healthBar.CurrentHealth <= 0 && !isDead)
         {
-            animator.SetBool("IsAlive", false);
+            Debug.Log($"Player Spider: Health reached 0, calling Die()");
+            Die();
         }
     }
     
@@ -120,5 +128,28 @@ public class PlayerSpider : MonoBehaviour
         }
         
         lastPosition = transform.position;
+    }
+
+    // Новый метод для обработки смерти
+    private void Die()
+    {
+        Debug.Log("Player Spider: Die() method called");
+        isDead = true;
+        
+        if (animator != null)
+        {
+            animator.SetBool("IsAlive", false);
+        }
+
+        // Вызываем GameOver
+        if (GameOverManager.Instance != null)
+        {
+            Debug.Log("Player Spider: Calling GameOverManager.Instance.GameOver()");
+            GameOverManager.Instance.GameOver();
+        }
+        else
+        {
+            Debug.LogError("Player Spider: GameOverManager.Instance is null!");
+        }
     }
 }

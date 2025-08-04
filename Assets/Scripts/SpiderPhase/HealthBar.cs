@@ -36,13 +36,16 @@ public class HealthBar : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log($"HealthBar TakeDamage called on {gameObject.name}. Current health: {currentHealth}, Damage: {damage}");
         currentHealth -= damage;
         if (currentHealth < 0)
         {
             currentHealth = 0;
+            Debug.Log($"Health reached 0, calling OnDeath on {gameObject.name}");
             OnDeath();
         }
         UpdateHealthBar();
+        Debug.Log($"HealthBar updated. New health: {currentHealth}");
     }
 
     void Update()
@@ -61,12 +64,27 @@ public class HealthBar : MonoBehaviour
 
     public void OnDeath()
     {
+        Debug.Log($"OnDeath called on {gameObject.name} with tag: {gameObject.tag}");
         // Если это игрок или лягушка, вызываем GameOver
         if (CompareTag("Player") || CompareTag("Frog"))
         {
+            Debug.Log($"Calling GameOver for {gameObject.name}");
             if (GameOverManager.Instance != null)
+            {
+                Debug.Log("GameOverManager.Instance found, calling GameOver()");
                 GameOverManager.Instance.GameOver();
+            }
+            else
+            {
+                Debug.LogError("GameOverManager.Instance is null! GameOverManager not found in scene.");
+            }
         }
-        Destroy(gameObject);
+        else
+        {
+            Debug.Log($"Not calling GameOver for {gameObject.name} (tag: {gameObject.tag})");
+        }
+        
+        // Не уничтожаем объект сразу, чтобы GameOver успел сработать
+        // Destroy(gameObject);
     }
 }
