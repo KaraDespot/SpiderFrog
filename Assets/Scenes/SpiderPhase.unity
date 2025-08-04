@@ -11448,6 +11448,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.09709195, y: 0.08307109, z: 0.17341153}
   m_Center: {x: -0.0034987312, y: 0.000013152477, z: 0.05561776}
+--- !u!1 &1949541124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949541125}
+  m_Layer: 0
+  m_Name: Flies
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1949541125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949541124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1, y: 2.56, z: 1.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2087516483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1950323064
 GameObject:
   m_ObjectHideFlags: 0
@@ -12867,7 +12898,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1599339644716271067, guid: 76a0cd1fe96dd7f41b4ec1391d515d45, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1949541125}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2124061037345054561, guid: 76a0cd1fe96dd7f41b4ec1391d515d45, type: 3}
       insertIndex: -1
@@ -12983,7 +13017,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   turnSpeed: 20
-  Flies: 3
+  Flies: 10
+  FliesPrefab: {fileID: 2324285668933102007, guid: cd05cad83a0c315409b69b3524a4072b, type: 3}
+  FliesSpawnPoint: {fileID: 1949541125}
+  FliesSpeed: 20
   Attack: {fileID: 2087516480}
   flyAttackCooldown: 2
 --- !u!136 &2087516482
@@ -13009,6 +13046,11 @@ CapsuleCollider:
   m_Height: 4.87
   m_Direction: 1
   m_Center: {x: 0, y: 2.4, z: 0}
+--- !u!4 &2087516483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1599339644716271067, guid: 76a0cd1fe96dd7f41b4ec1391d515d45, type: 3}
+  m_PrefabInstance: {fileID: 2087516475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2098090367
 GameObject:
   m_ObjectHideFlags: 0

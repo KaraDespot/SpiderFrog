@@ -108,8 +108,24 @@ public class PlayerSpider : MonoBehaviour
             Debug.Log($"Player Spider: Health reached 0, calling Die()");
             Die();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && Flies > 0 && FliesPrefab != null && FliesSpawnPoint != null)
+        {
+            FireFlies();
+            Flies--;
+        }
     }
-    
+
+    private void FireFlies()
+    {
+        GameObject proj = Instantiate(FliesPrefab, FliesSpawnPoint.position, FliesSpawnPoint.rotation);
+        Rigidbody rb = proj.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = FliesSpawnPoint.forward * FliesSpeed;
+        }
+    }
+
     void LateUpdate()
     {
         // Компенсация root motion - возвращаем паука на место, если он сдвинулся из-за анимации
