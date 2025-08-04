@@ -4,6 +4,10 @@ public class PlayerSpider : MonoBehaviour
 {
     public float speed = 5f;
     public float turnSpeed = 20f;
+    public int Flies = 3; // Количество супер-снарядов игро
+    [SerializeField] private GameObject FliesPrefab;
+    [SerializeField] private Transform FliesSpawnPoint; // Точка спавна снаряда
+    [SerializeField] private float FliesSpeed = 20f;
 
     private Rigidbody rb;
     private Vector3 movement;
