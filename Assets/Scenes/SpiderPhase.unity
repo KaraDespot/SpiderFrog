@@ -12951,6 +12951,9 @@ MonoBehaviour:
   speed: 8
   turnSpeed: 20
   Flies: 3
+  FliesPrefab: {fileID: 0}
+  FliesSpawnPoint: {fileID: 0}
+  FliesSpeed: 20
   Attack: {fileID: 2087516480}
   flyAttackCooldown: 2
 --- !u!136 &2087516482

@@ -69,7 +69,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
+  m_TransitionOffset: 0.9094103
   m_ExitTime: 0.6808511
   m_HasExitTime: 1
   m_HasFixedDuration: 1
@@ -93,7 +93,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.23450947
   m_TransitionOffset: 0
   m_ExitTime: 0.9529781
   m_HasExitTime: 0
@@ -118,7 +118,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.116666794
+  m_TransitionDuration: 0.08682108
   m_TransitionOffset: 0
   m_ExitTime: 0.97805643
   m_HasExitTime: 0
@@ -143,7 +143,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.23248184
   m_TransitionOffset: 0
   m_ExitTime: 0.82758623
   m_HasExitTime: 0
@@ -223,9 +223,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.7540984
+  m_TransitionDuration: 1.1179997
+  m_TransitionOffset: 0.7862296
+  m_ExitTime: 0.039727762
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -291,9 +291,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.26444757
+  m_TransitionDuration: 0.19826758
   m_TransitionOffset: 0
-  m_ExitTime: 0.82758623
+  m_ExitTime: 0.8275862
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -402,7 +402,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.21366549
   m_TransitionOffset: 0
   m_ExitTime: 0.9529781
   m_HasExitTime: 0
@@ -417,7 +417,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsWalking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -675560237869808440}
   m_Solo: 0
@@ -425,9 +428,9 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
+  m_TransitionOffset: 0.019068692
   m_ExitTime: 0.6808511
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -502,7 +505,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.23783457
   m_TransitionOffset: 0
   m_ExitTime: 0.82758623
   m_HasExitTime: 1
