@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RuntimeDataSO", menuName = "Game/Runtime Data")]
 public class RuntimeDataSO : ScriptableObject
 {
-    // Пример данных, которые можно хранить
+    // Р”Р°РЅРЅС‹Рµ РёРіСЂРѕРєР°, РєРѕС‚РѕСЂС‹Рµ СЃРѕС…СЂР°РЅСЏСЋС‚СЃСЏ РјРµР¶РґСѓ СЃС†РµРЅР°РјРё
     public int playerScore;
     public string playerName;
-    // Добавьте нужные поля для вашей сессии
+    public int collectedFlies; // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕР±СЂР°РЅРЅС‹С… РјРѕС€РµРє РІ FrogPhase
 }

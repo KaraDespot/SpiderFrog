@@ -7,8 +7,8 @@ public class SceneLoader : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private CanvasGroup _fadeCanvasGroup;
-        [SerializeField] private Image _frogDanceImage; // лягушка
-    [SerializeField] private Image _spiderDanceImage; // паук
+        [SerializeField] private Image _frogDanceImage; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    [SerializeField] private Image _spiderDanceImage; // пїЅпїЅпїЅпїЅ
 
     [Header("Sprites")]
     [SerializeField] private Sprite _frogDanceSprite1;
@@ -34,7 +34,7 @@ public class SceneLoader : MonoBehaviour
 
     public void Start()
     {
-        // Только для LoadingScene: автозапуск загрузки целевой сцены
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ LoadingScene: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         if (SceneManager.GetActiveScene().name == "LoadingScene")
         {
             string nextScene = PlayerPrefs.GetString("NextScene", "GameScene");

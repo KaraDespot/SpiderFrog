@@ -3,30 +3,30 @@ using TMPro;
 
 public class FlySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject flyPrefab;                    // Префаб мухи
-    [SerializeField] float spawnInterval = 2f;                // Интервал между спавнами
-    public int maxFlies = 10;                       // Максимум мух на сцене
-    public Vector2 spawnArea = new Vector2(8f, 5f); // Область появления
-    public TextMeshProUGUI counterText;             // UI-счётчик мух
+    [SerializeField] GameObject flyPrefab;                    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    [SerializeField] float spawnInterval = 2f;                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public int maxFlies = 10;                       // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    public Vector2 spawnArea = new Vector2(8f, 5f); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public TextMeshProUGUI counterText;             // UI-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
     public GameObject beePrefab;
     public float beeSpawnInterval = 4f;
     public int maxBees = 3;
-    public GameObject goldFlyPrefab; // Префаб золотой мухи
+    public GameObject goldFlyPrefab; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     [Range(0f, 1f)]
     public float goldFlyChance = 0.1f;
 
 
     private float timer;
-    public int flyCount;//екущее количество мух на сцене
+    public int flyCount;//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     private float beeTimer;
 
 
     void Start()
     {
-        // Найдём всех мух, уже находящихся на сцене
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         Fly[] existingFlies = FindObjectsOfType<Fly>();
 
-        // Назначим каждой мухе ссылку на спавнер
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         foreach (Fly fly in existingFlies)
         {
             fly.SetSpawner(this);
@@ -35,7 +35,7 @@ public class FlySpawner : MonoBehaviour
 
     void Update()
     {
-        // Спавн мух
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
         timer += Time.deltaTime;
         if (timer >= spawnInterval && flyCount < maxFlies)
         {
@@ -43,7 +43,7 @@ public class FlySpawner : MonoBehaviour
             timer = 0f;
         }
 
-        // Спавн пчёл
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         beeTimer += Time.deltaTime;
         if (beeTimer >= beeSpawnInterval)
         {
@@ -51,7 +51,7 @@ public class FlySpawner : MonoBehaviour
             beeTimer = 0f;
         }
 
-        // UI обновление
+        // UI пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (counterText != null)
             counterText.text = $"{flyCount}";
 
@@ -61,14 +61,14 @@ public class FlySpawner : MonoBehaviour
     {
         if (flyPrefab == null) return;
 
-        // Генерация случайной позиции в пределах экрана
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         float x = Random.Range(0.1f, 0.9f);
         float y = Random.Range(0.2f, 0.8f);
 
-        // Глубина спавна мух (Z = 116.8)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ (Z = 116.8)
         float spawnDepth = 136.8f;
 
-        // Получаем мировую позицию на нужной глубине
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Vector3 viewportPos = new Vector3(x, y, spawnDepth - Camera.main.transform.position.z);
         Vector3 spawnPos = Camera.main.ViewportToWorldPoint(viewportPos);
 
@@ -90,14 +90,14 @@ public class FlySpawner : MonoBehaviour
     {
         if (beePrefab == null) return;
 
-        // Генерация случайной позиции в пределах экрана
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         float x = Random.Range(0.1f, 0.9f);
         float y = Random.Range(0.3f, 0.7f);
 
-        // Глубина спавна пчёл (та же, что и у мух)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅ пїЅпїЅ, пїЅпїЅпїЅ пїЅ пїЅ пїЅпїЅпїЅ)
         float spawnDepth = 136.8f;
 
-        // Переводим экранные координаты в мировые
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Vector3 viewportPos = new Vector3(x, y, spawnDepth - Camera.main.transform.position.z);
         Vector3 spawnPos = Camera.main.ViewportToWorldPoint(viewportPos);
 
@@ -125,5 +125,14 @@ public class FlySpawner : MonoBehaviour
     public void OnGoldenFlyDestroyed()
     {
         flyCount += 5;
+    }
+    
+    // РЎРѕС…СЂР°РЅСЏРµРј РјРѕС€РєРё РїСЂРё РїРµСЂРµС…РѕРґРµ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ СЃС†РµРЅСѓ
+    public void SaveFliesForNextPhase()
+    {
+        if (GameDataManager.Instance != null)
+        {
+            GameDataManager.Instance.SaveFlies(flyCount);
+        }
     }
 }
