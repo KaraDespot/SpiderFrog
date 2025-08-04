@@ -11108,6 +11108,7 @@ GameObject:
   - component: {fileID: 1914826280}
   - component: {fileID: 1914826282}
   - component: {fileID: 1914826281}
+  - component: {fileID: 1914826283}
   m_Layer: 5
   m_Name: FlyPanel
   m_TagString: Untagged
@@ -11174,6 +11175,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914826279}
   m_CullTransparentMesh: 1
+--- !u!114 &1914826283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914826279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12360af3bd2aab7409666902d7946be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoText: {fileID: 2025946926}
+  playerSpider: {fileID: 2087516481}
 --- !u!1 &1926917571
 GameObject:
   m_ObjectHideFlags: 0
@@ -12935,6 +12950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   turnSpeed: 20
+  Flies: 3
   Attack: {fileID: 2087516480}
   flyAttackCooldown: 2
 --- !u!136 &2087516482
