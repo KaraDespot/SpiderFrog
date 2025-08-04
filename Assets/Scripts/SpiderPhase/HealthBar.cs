@@ -63,6 +63,7 @@ public class HealthBar : MonoBehaviour
 
     public void OnDeath()
     {
-        Destroy(gameObject);
+        if (Application.isPlaying)
+            Destroy(gameObject);
     }
 }

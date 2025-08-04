@@ -197,7 +197,7 @@ MonoBehaviour:
   chaseDistance: 8
   attackDistance: 1.5
   attackCooldown: 2
-  targetFrog: {fileID: 0}
+  targetFrog: {fileID: 5216806623290771078, guid: 990e2acde692332449cdd5d316a94259, type: 3}
   attackComponent: {fileID: 8586402964888304016}
 --- !u!114 &8529378452419794999
 MonoBehaviour:
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f6ddef3389bde4d8a5f370ddb00a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target1: {fileID: 0}
-  target2: {fileID: 0}
+  target1: {fileID: 2873131212202210713, guid: 990e2acde692332449cdd5d316a94259, type: 3}
+  target2: {fileID: 1599339644716271067, guid: 76a0cd1fe96dd7f41b4ec1391d515d45, type: 3}
   attackRange: 3
   attackDamage: 10
   attackCooldown: 1
