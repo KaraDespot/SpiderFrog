@@ -29,12 +29,22 @@ public class EnemyBirdAI : MonoBehaviour
         {
             targetFrog = GameObject.FindGameObjectWithTag("Frog");
         }
+
+        // Отладочная информация
+        Debug.Log($"EnemyBirdAI Start: Player found = {player != null}, Frog found = {targetFrog != null}");
+        if (player != null)
+            Debug.Log($"Player tag: {player.tag}, name: {player.name}");
+        if (targetFrog != null)
+            Debug.Log($"Frog tag: {targetFrog.tag}, name: {targetFrog.name}");
     }
 
     void Update()
     {
         if (player == null)
+        {
+            Debug.LogWarning("Player is null in EnemyBirdAI Update");
             return;
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
@@ -49,6 +59,7 @@ public class EnemyBirdAI : MonoBehaviour
                     float distanceToFrog = Vector3.Distance(transform.position, targetFrog.transform.position);
                     if (distanceToFrog <= attackDistance && Time.time >= lastAttackTime + attackCooldown)
                     {
+                        Debug.Log($"Attacking Frog! Distance: {distanceToFrog}, AttackDistance: {attackDistance}");
                         AttackTarget(targetFrog);
                     }
                 }
@@ -56,6 +67,7 @@ public class EnemyBirdAI : MonoBehaviour
                 if (distanceToPlayer <= chaseDistance)
                 {
                     currentState = AIState.ChaseSpider;
+                    Debug.Log("Switching to ChaseSpider state");
                 }
                 break;
 
@@ -64,13 +76,14 @@ public class EnemyBirdAI : MonoBehaviour
 
                 if (distanceToPlayer <= attackDistance && Time.time >= lastAttackTime + attackCooldown)
                 {
-                    lastAttackTime = Time.time;
+                    Debug.Log($"Attacking Player! Distance: {distanceToPlayer}, AttackDistance: {attackDistance}");
                     AttackTarget(player);
                 }
 
                 if (distanceToPlayer > chaseDistance)
                 {
                     currentState = AIState.ChaseFrog;
+                    Debug.Log("Switching to ChaseFrog state");
                 }
                 break;
         }
@@ -79,13 +92,32 @@ public class EnemyBirdAI : MonoBehaviour
     // Новый метод для атаки цели
     private void AttackTarget(GameObject target)
     {
-        if (target == null) return;
-
-        HealthBar healthBar = target.GetComponent<HealthBar>();
-        if (healthBar != null && healthBar.CurrentHealth > 0)
+        if (target == null) 
         {
-            healthBar.TakeDamage(attackDamage);
-            lastAttackTime = Time.time;
+            Debug.LogWarning("AttackTarget: target is null");
+            return;
+        }
+
+        Debug.Log($"AttackTarget called on: {target.name} with tag: {target.tag}");
+        
+        HealthBar healthBar = target.GetComponent<HealthBar>();
+        if (healthBar != null)
+        {
+            Debug.Log($"HealthBar found! Current health: {healthBar.CurrentHealth}");
+            if (healthBar.CurrentHealth > 0)
+            {
+                healthBar.TakeDamage(attackDamage);
+                lastAttackTime = Time.time;
+                Debug.Log($"Damage dealt: {attackDamage}, New health: {healthBar.CurrentHealth}");
+            }
+            else
+            {
+                Debug.Log("Target already dead (health <= 0)");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"HealthBar component not found on {target.name}");
         }
     }
 
