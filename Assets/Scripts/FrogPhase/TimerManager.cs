@@ -27,7 +27,7 @@ public class TimerManager : MonoBehaviour
 
             // Показываем счет при окончании времени
             if (scoreText != null && flySpawner != null)
-                scoreText.text = "Счет: " + flySpawner.flyCount.ToString();
+                scoreText.text = "Мошек поймано: " + flySpawner.flyCount.ToString();
         }
 
         // Обновление UI таймера и счетчика мух (если нужно в реальном времени)

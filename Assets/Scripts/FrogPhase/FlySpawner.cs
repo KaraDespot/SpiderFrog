@@ -61,15 +61,17 @@ public class FlySpawner : MonoBehaviour
     {
         if (flyPrefab == null) return;
 
-        Vector3 spawnOffset = new Vector3(
-            Random.Range(-spawnArea.x, spawnArea.x),
-            Random.Range(-spawnArea.y, spawnArea.y),
-            0f
-        );
+        // Генерация случайной позиции в пределах экрана
+        float x = Random.Range(0.1f, 0.9f);
+        float y = Random.Range(0.2f, 0.8f);
 
-        Vector3 spawnPos = transform.position + spawnOffset;
+        // Глубина спавна мух (Z = 116.8)
+        float spawnDepth = 126.8f;
 
-        // Выбираем обычную или золотую муху
+        // Получаем мировую позицию на нужной глубине
+        Vector3 viewportPos = new Vector3(x, y, spawnDepth - Camera.main.transform.position.z);
+        Vector3 spawnPos = Camera.main.ViewportToWorldPoint(viewportPos);
+
         GameObject prefabToSpawn = Random.value < goldFlyChance ? goldFlyPrefab : flyPrefab;
 
         GameObject newFly = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
@@ -79,19 +81,25 @@ public class FlySpawner : MonoBehaviour
         {
             flyScript.SetSpawner(this);
         }
+
     }
+
+
 
     void SpawnBee()
     {
         if (beePrefab == null) return;
 
-        Vector3 spawnOffset = new Vector3(
-            Random.Range(-spawnArea.x, spawnArea.x),
-            Random.Range(-spawnArea.y, spawnArea.y),
-            0f
-        );
+        // Генерация случайной позиции в пределах экрана
+        float x = Random.Range(0.1f, 0.9f);
+        float y = Random.Range(0.2f, 0.8f);
 
-        Vector3 spawnPos = transform.position + spawnOffset;
+        // Глубина спавна пчёл (та же, что и у мух)
+        float spawnDepth = 126.8f;
+
+        // Переводим экранные координаты в мировые
+        Vector3 viewportPos = new Vector3(x, y, spawnDepth - Camera.main.transform.position.z);
+        Vector3 spawnPos = Camera.main.ViewportToWorldPoint(viewportPos);
 
         GameObject newBee = Instantiate(beePrefab, spawnPos, Quaternion.identity);
 
@@ -101,6 +109,7 @@ public class FlySpawner : MonoBehaviour
             beeScript.SetSpawner(this);
         }
     }
+
 
 
     public void OnFlyDestroyed()
