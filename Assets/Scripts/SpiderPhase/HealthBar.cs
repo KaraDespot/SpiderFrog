@@ -3,10 +3,9 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private Image _healthBarImage; // Для врага используем Image
-    [SerializeField] private Slider _healthBarSlider; // Для игрока используем Slider
+    [SerializeField] private Image _healthBarImage; // Для врага
+    [SerializeField] private Slider _healthBarSlider; // Для игрока
     [SerializeField] private float maxHealth;
-    [SerializeField] private Transform healthBarTransform; // Дочерний объект с Image
 
     private float currentHealth;
     private Camera _camera;
@@ -22,12 +21,12 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        // Если есть Image, обновляем fillAmount (для врага)
+        // Обновляем только тот компонент, который назначен
         if (_healthBarImage != null)
         {
             _healthBarImage.fillAmount = currentHealth / maxHealth;
         }
-        // Если есть Slider, обновляем value (для игрока)
+
         if (_healthBarSlider != null)
         {
             _healthBarSlider.maxValue = maxHealth;
@@ -48,7 +47,8 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        if (_healthBarImage != null && healthBarTransform != null)
+        // Если используется Image, поворачиваем его к камере
+        if (_healthBarImage != null)
         {
             if (_camera == null)
             {
@@ -56,8 +56,8 @@ public class HealthBar : MonoBehaviour
                 if (_camera == null)
                     return;
             }
-            Vector3 direction = healthBarTransform.position - _camera.transform.position;
-            healthBarTransform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+            transform.rotation = Quaternion.LookRotation(transform.position - _camera.transform.position);
         }
     }
 
