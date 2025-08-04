@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Attack : MonoBehaviour, IAttack
+public class Attack : MonoBehaviour
 {
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackRange = 2f;

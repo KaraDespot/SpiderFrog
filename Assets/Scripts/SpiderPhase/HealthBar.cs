@@ -56,8 +56,6 @@ public class HealthBar : MonoBehaviour
                 if (_camera == null)
                     return;
             }
-
-            transform.rotation = Quaternion.LookRotation(transform.position - _camera.transform.position);
         }
     }
 

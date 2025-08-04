@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6271242933163274068}
   - component: {fileID: 4229108673288985784}
   - component: {fileID: 1402743548139211878}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 468178657709810287}
   - component: {fileID: 8529378452419794999}
   - component: {fileID: 8586402964888304016}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Enemy Bird
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -198,7 +198,6 @@ MonoBehaviour:
   attackDistance: 1.5
   attackCooldown: 2
   targetFrog: {fileID: 5216806623290771078, guid: 990e2acde692332449cdd5d316a94259, type: 3}
-  attackComponent: {fileID: 8586402964888304016}
 --- !u!114 &8529378452419794999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +241,7 @@ GameObject:
   - component: {fileID: 49964423153057123}
   - component: {fileID: 7676240640671721125}
   - component: {fileID: 4145986717353109572}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +318,7 @@ GameObject:
   - component: {fileID: 7458185985800376972}
   - component: {fileID: 7778439932617387086}
   - component: {fileID: 4853571370646129255}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: HealthbarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e2a1024c5366c194097378cc1114a762, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

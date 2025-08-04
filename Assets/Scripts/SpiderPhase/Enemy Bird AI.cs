@@ -18,9 +18,6 @@ public class EnemyBirdAI : MonoBehaviour
 
     private GameObject player;
     [SerializeField] private GameObject targetFrog;
-    [SerializeField] private MonoBehaviour attackComponent; // Теперь можно вставить любой MonoBehaviour
-
-    private IAttack Attack => attackComponent as IAttack;
 
     void Start()
     {
@@ -59,8 +56,6 @@ public class EnemyBirdAI : MonoBehaviour
 
                 if (distanceToPlayer <= attackDistance && Time.time >= lastAttackTime + attackCooldown)
                 {
-                    if (Attack != null)
-                        Attack.OnAttack();
                     lastAttackTime = Time.time;
                 }
 

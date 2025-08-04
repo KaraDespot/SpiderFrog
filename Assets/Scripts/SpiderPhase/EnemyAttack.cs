@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour, IAttack
+public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private Transform target1; // Лягушка
     [SerializeField] private Transform target2; // Паук
@@ -30,11 +30,6 @@ public class EnemyAttack : MonoBehaviour, IAttack
                 lastAttackTime = Time.time;
             }
         }
-    }
-
-    public void OnAttack()
-    {
-        // Не используется, но оставлено для интерфейса
     }
 
     void OnDrawGizmosSelected()
