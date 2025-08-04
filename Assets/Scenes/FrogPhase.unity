@@ -6216,11 +6216,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8583711187102383699, guid: 92a2ab0dce7c8c14e8616ca0e0031380, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6167085461663232577, guid: 92a2ab0dce7c8c14e8616ca0e0031380, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8943877628690792488}
   m_SourcePrefab: {fileID: 100100000, guid: 92a2ab0dce7c8c14e8616ca0e0031380, type: 3}
+--- !u!1 &8943877628690792487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6167085461663232577, guid: 92a2ab0dce7c8c14e8616ca0e0031380, type: 3}
+  m_PrefabInstance: {fileID: 8943877628690792486}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8943877628690792488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8943877628690792487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 4cbc720623624d94ca26c37a9bdde20a, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
