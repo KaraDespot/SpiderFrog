@@ -6,6 +6,7 @@ public class ShootHandler3D : MonoBehaviour
     [SerializeField] string targetTag = "Fly";
     [SerializeField] Camera mainCamera;
     [SerializeField] FlySpawner flySpawner; // Ссылка на спавнер мух, если нужно
+    [SerializeField] private Animator tongueAnimator; // Добавьте это поле
     public int score = 0;
 
     private RectTransform aimRect;
@@ -22,6 +23,10 @@ public class ShootHandler3D : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            // Запуск анимации языка
+            if (tongueAnimator != null)
+                tongueAnimator.SetTrigger("Lick");
+
             Vector2 screenAimPos = RectTransformUtility.WorldToScreenPoint(mainCamera, aimRect.position);
 
             GameObject[] allTargets = GameObject.FindGameObjectsWithTag(targetTag);
