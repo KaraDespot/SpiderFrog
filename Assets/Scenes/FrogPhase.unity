@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0:30
+  m_text: 0:45
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2cfc723204ec45347975035ee74f5fac, type: 2}
   m_sharedMaterial: {fileID: -5560392681441639901, guid: 2cfc723204ec45347975035ee74f5fac, type: 2}
@@ -2263,15 +2263,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyPrefab: {fileID: 2324285668933102007, guid: 3a73a0d0dde76b84facef906cbc93b64, type: 3}
-  spawnInterval: 3
-  maxFlies: 20
+  spawnInterval: 2
+  maxFlies: 50
   spawnArea: {x: -2, y: 10}
   counterText: {fileID: 327349966}
   beePrefab: {fileID: 2834942614922408939, guid: 54988967089b34348979b640c69120b3, type: 3}
-  beeSpawnInterval: 4
+  beeSpawnInterval: 5
   maxBees: 3
   goldFlyPrefab: {fileID: 3128150464725793049, guid: 0ea8714112153cf48afc1c3a9e52c5c6, type: 3}
-  goldFlyChance: 0.228
+  goldFlyChance: 0.255
   flyCount: 0
 --- !u!4 &784989214
 Transform:
@@ -2300,7 +2300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746955d5c667c9349af7912c0c212a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 30
+  timeRemaining: 45
   timerText: {fileID: 681619194}
   timerIsRunning: 1
 --- !u!114 &784989216
@@ -2315,7 +2315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae8f23d02b5a394a9b9e84cfe587a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 30
+  totalTime: 45
   progressBar: {fileID: 1487746392}
   barIsRunning: 0
 --- !u!114 &784989217
@@ -2333,7 +2333,7 @@ MonoBehaviour:
   timeOverPanel: {fileID: 1383431861}
   scoreText: {fileID: 2070011776}
   flySpawner: {fileID: 784989213}
-  startTime: 30
+  startTime: 45
 --- !u!1001 &788969758
 PrefabInstance:
   m_ObjectHideFlags: 0

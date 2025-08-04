@@ -63,7 +63,12 @@ public class HealthBar : MonoBehaviour
 
     public void OnDeath()
     {
-        if (Application.isPlaying)
-            Destroy(gameObject);
+        // Если это игрок или лягушка, вызываем GameOver
+        if (CompareTag("Player") || CompareTag("Frog"))
+        {
+            if (GameOverManager.Instance != null)
+                GameOverManager.Instance.GameOver();
+        }
+        Destroy(gameObject);
     }
 }
