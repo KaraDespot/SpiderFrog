@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3994808718983171574}
   - component: {fileID: 8637656775450205936}
   - component: {fileID: 358655342867202550}
-  - component: {fileID: 6133501480804371440}
+  - component: {fileID: 3433696437912748523}
   m_Layer: 0
   m_Name: tablebooks
   m_TagString: Untagged
@@ -94,7 +94,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6133501480804371440
+--- !u!64 &3433696437912748523
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
