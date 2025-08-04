@@ -66,7 +66,7 @@ public class FlySpawner : MonoBehaviour
         float y = Random.Range(0.2f, 0.8f);
 
         // Глубина спавна мух (Z = 116.8)
-        float spawnDepth = 126.8f;
+        float spawnDepth = 136.8f;
 
         // Получаем мировую позицию на нужной глубине
         Vector3 viewportPos = new Vector3(x, y, spawnDepth - Camera.main.transform.position.z);
@@ -92,10 +92,10 @@ public class FlySpawner : MonoBehaviour
 
         // Генерация случайной позиции в пределах экрана
         float x = Random.Range(0.1f, 0.9f);
-        float y = Random.Range(0.2f, 0.8f);
+        float y = Random.Range(0.3f, 0.7f);
 
         // Глубина спавна пчёл (та же, что и у мух)
-        float spawnDepth = 126.8f;
+        float spawnDepth = 136.8f;
 
         // Переводим экранные координаты в мировые
         Vector3 viewportPos = new Vector3(x, y, spawnDepth - Camera.main.transform.position.z);
