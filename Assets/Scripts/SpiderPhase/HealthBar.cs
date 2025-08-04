@@ -11,6 +11,8 @@ public class HealthBar : MonoBehaviour
     private float currentHealth;
     private Camera _camera;
 
+    public float CurrentHealth => currentHealth;
+
     private void Start()
     {
         currentHealth = maxHealth;
